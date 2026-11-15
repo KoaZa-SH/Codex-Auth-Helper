@@ -2,7 +2,7 @@
 
 A security-first, multilingual helper for managing Codex authentication configuration.
 
-**Status: Research and architecture phase; token-lifecycle guard implemented.** This repository is not yet a usable extension build. The local decision guard prevents refresh attempts with an empty refresh token, but OAuth login, provider integration, secure credential storage, and Codex compatibility are not implemented.
+**Status: Research and architecture phase; token-lifecycle guard implemented.** This repository is not yet a usable extension build. The token-lifecycle module returns a reauthentication decision instead of a refresh decision when the refresh token is empty. It is not yet wired to a running OAuth client; OAuth login, provider integration, secure credential storage, and Codex compatibility are not implemented.
 
 ## Goals
 
@@ -16,7 +16,7 @@ A security-first, multilingual helper for managing Codex authentication configur
 ## Implemented in this revision
 
 - A pure token-lifecycle decision module at `src/auth/token-lifecycle.js`.
-- A hard guard that rejects empty or whitespace-only refresh-token values before a caller can attempt refresh.
+- A reusable guard and decision function that identify empty or whitespace-only refresh-token values before a future caller sends a refresh request.
 - Explicit states for usable access token, unknown expiry, refresh eligibility, and reauthentication.
 - Node.js tests for the empty-refresh-token failure mode.
 
@@ -32,7 +32,7 @@ See [Token lifecycle](docs/TOKEN-LIFECYCLE.md) for the exact behavior.
 
 ## Current limitations
 
-The project does not yet implement OAuth login, token exchange, refresh network calls, credential persistence, a browser-extension UI, or a verified integration with Codex Desktop/Work. The guard prevents a malformed refresh request; it does not manufacture a valid refresh token or guarantee that Work can refresh the session.
+The project does not yet implement OAuth login, token exchange, refresh network calls, credential persistence, a browser-extension UI, or a verified integration with Codex Desktop/Work. The module provides the decision logic for preventing a malformed refresh request when integrated by a caller; this repository does not yet contain a running refresh client. It does not manufacture a valid refresh token or guarantee that Work can refresh the session.
 
 ## Tests
 
