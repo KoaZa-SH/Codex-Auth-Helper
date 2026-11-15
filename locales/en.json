@@ -5,5 +5,9 @@
   "persian": "Persian",
   "chineseSimplified": "Simplified Chinese",
   "authNotImplemented": "Authentication is not available in this research build.",
-  "securityNotice": "Never share your access token, refresh token, or browser session."
+  "securityNotice": "Never share your access token, refresh token, or browser session.",
+  "accessTokenUsable": "Your current access token is still usable. Refresh is not needed yet.",
+  "refreshUnavailable": "A refresh token is not available. The current access token may work only until it expires.",
+  "reauthenticationRequired": "Your access token has expired and no refresh token is available. Sign in again.",
+  "tokenExpiryUnknown": "The access-token expiry could not be verified. No refresh request was sent."
 }
