@@ -1,0 +1,9 @@
+{
+  "appName": "Codex Auth Helper",
+  "language": "Language",
+  "english": "English",
+  "persian": "Persian",
+  "chineseSimplified": "Simplified Chinese",
+  "authNotImplemented": "Authentication is not available in this research build.",
+  "securityNotice": "Never share your access token, refresh token, or browser session."
+}
