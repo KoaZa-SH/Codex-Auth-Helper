@@ -1,0 +1,9 @@
+{
+  "appName": "Codex 身份验证助手",
+  "language": "语言",
+  "english": "英语",
+  "persian": "波斯语",
+  "chineseSimplified": "简体中文",
+  "authNotImplemented": "当前研究版本尚未启用身份验证。",
+  "securityNotice": "请勿分享您的访问令牌、刷新令牌或浏览器会话。"
+}
