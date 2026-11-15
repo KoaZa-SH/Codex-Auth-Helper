@@ -2,7 +2,7 @@
 
 A security-first, multilingual helper for managing Codex authentication configuration.
 
-**Status: Research and architecture phase.** Authentication is not implemented yet. The project will not fabricate OAuth tokens, reinterpret browser session cookies as refresh tokens, or claim compatibility until the supported authentication flow and credential format have been verified.
+**Status: Research and architecture phase; token-lifecycle guard implemented.** This repository is not yet a usable extension build. The local decision guard prevents refresh attempts with an empty refresh token, but OAuth login, provider integration, secure credential storage, and Codex compatibility are not implemented.
 
 ## Goals
 
@@ -13,6 +13,15 @@ A security-first, multilingual helper for managing Codex authentication configur
 - Safe handling of access-token expiry, refresh-token rotation, logout, and interrupted writes.
 - Automated tests for authentication lifecycle and localization.
 
+## Implemented in this revision
+
+- A pure token-lifecycle decision module at `src/auth/token-lifecycle.js`.
+- A hard guard that rejects empty or whitespace-only refresh-token values before a caller can attempt refresh.
+- Explicit states for usable access token, unknown expiry, refresh eligibility, and reauthentication.
+- Node.js tests for the empty-refresh-token failure mode.
+
+See [Token lifecycle](docs/TOKEN-LIFECYCLE.md) for the exact behavior.
+
 ## Security principles
 
 - Never treat a ChatGPT browser session token as an OAuth refresh token.
@@ -21,8 +30,20 @@ A security-first, multilingual helper for managing Codex authentication configur
 - Do not ship an OAuth client secret in a browser extension.
 - Do not implement an undocumented or unsupported authentication endpoint.
 
-## Current status
+## Current limitations
+
+The project does not yet implement OAuth login, token exchange, refresh network calls, credential persistence, a browser-extension UI, or a verified integration with Codex Desktop/Work. The guard prevents a malformed refresh request; it does not manufacture a valid refresh token or guarantee that Work can refresh the session.
+
+## Tests
+
+Requires Node.js 20 or later:
+
+```sh
+npm test
+```
+
+## Research
 
 See [Authentication research](docs/AUTHENTICATION.md), [Security policy](docs/SECURITY.md), and [Architecture](docs/ARCHITECTURE.md).
 
-No usable extension build is published yet. A working login flow depends on confirming an officially supported OAuth client and the exact Codex credential contract.
+A working login flow depends on confirming an officially supported OAuth client and the exact Codex credential contract.
