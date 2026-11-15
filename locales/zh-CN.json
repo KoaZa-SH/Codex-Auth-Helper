@@ -5,5 +5,9 @@
   "persian": "波斯语",
   "chineseSimplified": "简体中文",
   "authNotImplemented": "当前研究版本尚未启用身份验证。",
-  "securityNotice": "请勿分享您的访问令牌、刷新令牌或浏览器会话。"
+  "securityNotice": "请勿分享您的访问令牌、刷新令牌或浏览器会话。",
+  "accessTokenUsable": "当前访问令牌仍可使用，暂时无需刷新。",
+  "refreshUnavailable": "刷新令牌不可用。当前访问令牌可能只能使用到其过期为止。",
+  "reauthenticationRequired": "访问令牌已过期且没有可用的刷新令牌，请重新登录。",
+  "tokenExpiryUnknown": "无法验证访问令牌的过期时间，因此未发送刷新请求。"
 }
