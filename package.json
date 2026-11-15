@@ -1,0 +1,13 @@
+{
+  "name": "codex-auth-helper",
+  "version": "0.1.1",
+  "private": true,
+  "type": "module",
+  "description": "Security-first Codex authentication helper research project",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
